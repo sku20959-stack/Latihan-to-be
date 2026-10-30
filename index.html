@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dengerin Dulu: to be (am, is, are)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#f3f0ff;--card:#fff;--ink:#1b1440;--mute:#5f5a8a;--line:#d9d3f5;--lime:#c6ff3d;--pink:#ff4fa3;--cyan:#22d3dd;--dark:#14102e;--shade:#1b1440;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#120f2b;--card:#1d1840;--ink:#fff;--mute:#b7b0e6;--line:#352d6b;--shade:#000}}
+:root[data-theme="dark"]{--bg:#120f2b;--card:#1d1840;--ink:#fff;--mute:#b7b0e6;--line:#352d6b;--shade:#000}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Lexend",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:18px 16px 56px}
+h1{font-size:1.9rem;font-weight:800;line-height:1.1;margin:6px 0 6px;letter-spacing:-.5px}
+h1 span{background:var(--pink);color:var(--dark);padding:0 8px;border-radius:8px;display:inline-block;transform:rotate(-2deg)}
+h2{font-size:1.1rem;margin:0 0 4px}
+p{margin:0}
+.sub{color:var(--mute);font-size:.92rem}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 8px}
+.chip{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:6px 12px;font-weight:600;font-size:.95rem}
+.bar{height:12px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:99px;transition:width .4s}
+.lv{font-size:.82rem;color:var(--mute);margin:6px 0 0}
+button{font:inherit;cursor:pointer;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);padding:9px 16px;min-height:46px;font-weight:600;box-shadow:0 4px 0 var(--line)}
+button:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+button.go{background:var(--lime);color:var(--dark);border-color:var(--dark);box-shadow:0 4px 0 var(--shade)}
+button.go:active{box-shadow:0 1px 0 var(--shade)}
+button[aria-pressed="true"]{background:var(--cyan);color:var(--dark);border-color:var(--dark)}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0 4px}
+.tabs button[aria-selected="true"]{background:var(--pink);color:var(--dark);border-color:var(--dark);box-shadow:0 4px 0 var(--shade)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px;margin-top:14px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+ul{list-style:none;margin:0;padding:0}
+.line{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:2px dashed var(--line)}
+.line:first-child{border-top:0}
+.play{flex:none;width:48px;padding:0;border-radius:50%;background:var(--cyan);color:var(--dark);border-color:var(--dark);box-shadow:0 4px 0 var(--shade)}
+.txt{flex:1;min-width:0}
+.en{font-weight:600;font-size:1.05rem}
+.id{color:var(--mute);font-size:.88rem}
+.hidden-text .en,.hidden-text .id{filter:blur(7px);user-select:none}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sent{font-size:1.15rem;font-weight:600;margin:6px 0 12px}
+.blank{display:inline-block;min-width:3.2em;border-bottom:4px solid var(--pink);text-align:center}
+.opts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.opts button{min-width:70px}
+.q{padding:14px 0;border-top:2px dashed var(--line)}
+.q:first-child{border-top:0}
+.right{background:var(--lime)!important;color:var(--dark)!important;border-color:var(--dark)!important}
+.wrong{background:var(--pink)!important;color:var(--dark)!important;border-color:var(--dark)!important}
+input[type=text]{width:100%;font:inherit;font-size:1.05rem;padding:12px 14px;min-height:48px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin:12px 0}
+.w{display:inline-block;padding:2px 9px;border-radius:8px;margin:3px 4px 3px 0;font-weight:600;color:var(--dark)}
+.w.r{background:var(--lime)}.w.x{background:var(--pink)}
+.fb{margin-top:10px;font-size:.95rem}
+.big{font-size:1.2rem;font-weight:800;margin-top:12px}
+.note{color:var(--pink);font-size:.9rem;margin-top:8px}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<h1>Dengerin dulu, <span>baru jago</span></h1>
+<p class="sub">Latihan listening topik to be (am, is, are) dengan American English. Kumpulin poin dan naik level!</p>
+<p class="note" id="nosupport" hidden>Browser ini belum mendukung suara. Buka lewat Chrome atau Safari ya.</p>
+
+<div class="stats">
+<span class="chip" id="pts">⭐ 0 poin</span>
+<span class="chip" id="combo">🔥 Combo 0</span>
+<button id="slow" aria-pressed="false">🐢 Pelan</button>
+</div>
+<div class="bar"><i id="fill"></i></div>
+<p class="lv" id="lv"></p>
+
+<div class="tabs" role="tablist">
+<button role="tab" id="t0" aria-selected="true">🎧 Dengar</button>
+<button role="tab" id="t1" aria-selected="false">✍️ Nulis</button>
+<button role="tab" id="t2" aria-selected="false">🎯 Kuis</button>
+</div>
+
+<section class="card" id="p0">
+<h2>Dengerin dulu</h2>
+<p class="sub">Ketuk tombol putar di tiap kalimat. Sembunyikan teks kalau mau latihan telinga beneran.</p>
+<div class="tools">
+<button class="go" id="all">▶ Putar semua</button>
+<button id="show" aria-pressed="true">👀 Teks tampil</button>
+</div>
+<ul id="lines"></ul>
+</section>
+
+<section class="card" id="p1" hidden>
+<h2>Dengar, lalu tulis</h2>
+<p class="sub">Putar kalimatnya, ketik apa yang kamu dengar, lalu cek.</p>
+<div class="row"><button class="play" id="dplay" aria-label="Putar kalimat">▶</button><span class="chip" id="dnum"></span></div>
+<input type="text" id="din" placeholder="Ketik kalimat yang kamu dengar" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Jawabanmu">
+<div class="row"><button class="go" id="dcheck">Cek</button><button class="go" id="dnext" hidden>Lanjut ➜</button></div>
+<div class="fb" id="dres" aria-live="polite"></div>
+</section>
+
+<section class="card" id="p2" hidden>
+<h2>Kata apa yang kamu dengar?</h2>
+<p class="sub">Putar kalimatnya, lalu pilih am, is, atau are.</p>
+<div id="quiz"></div>
+<p class="big" id="qscore" aria-live="polite"></p>
+<button class="go" id="qreset" hidden>Ulangi kuis</button>
+</section>
+</main>
+<script>
+(function(){
+var LINES=[
+["Hi, I am Dina. I am from Indonesia.","Hai, aku Dina. Aku dari Indonesia."],
+["This is my friend, Tom. He is from America.","Ini temanku, Tom. Dia dari Amerika."],
+["We are students at the same school.","Kami murid di sekolah yang sama."],
+["You are late today.","Kamu terlambat hari ini."],
+["They are not at home.","Mereka tidak ada di rumah."],
+["Is she your teacher? Yes, she is.","Apakah dia gurumu? Ya, benar."]
+];
+var DICT=["I am a student.","She is my sister.","We are very happy.","They are not at home.","Are you ready?","He is not late today."];
+var QUIZ=[
+["I","hungry","am","I am hungry."],
+["He","at school","is","He is at school."],
+["They","my friends","are","They are my friends."],
+["My mother","a nurse","is","My mother is a nurse."],
+["You","very kind","are","You are very kind."],
+["We","ready","are","We are ready."]
+];
+var $=function(s){return document.querySelector(s)};
+var synth=window.speechSynthesis,voice=null,slow=false,stopAll=false,pts=0,combo=0;
+if(!synth||typeof SpeechSynthesisUtterance==="undefined")$("#nosupport").hidden=false;
+function pick(){if(!synth)return;var v=synth.getVoices();voice=v.filter(function(x){return x.lang==="en-US"})[0]||v.filter(function(x){return x.lang.indexOf("en")===0})[0]||null}
+pick();
+if(synth&&synth.addEventListener)synth.addEventListener("voiceschanged",pick);
+function say(t,done){
+ if(!synth)return;
+ synth.cancel();
+ var u=new SpeechSynthesisUtterance(t);u.lang="en-US";
+ if(voice)u.voice=voice;
+ u.rate=slow?0.7:0.95;
+ if(done){u.onend=done;u.onerror=done}
+ synth.speak(u);
+}
+function stats(){
+ var lv=pts>=120?3:pts>=50?2:1,names=["Pemula","Lancar","Jago"];
+ var pct=lv===1?pts/50:lv===2?(pts-50)/70:1;
+ $("#pts").textContent="⭐ "+pts+" poin";
+ $("#combo").textContent="🔥 Combo "+combo;
+ $("#fill").style.width=Math.min(100,Math.round(pct*100))+"%";
+ $("#lv").textContent="Level "+lv+": "+names[lv-1]+(lv<3?" (target "+(lv===1?50:120)+" poin)":" (level tertinggi!)");
+}
+function award(n,ok){
+ if(ok){combo++;n+=combo>=3?5:0}else combo=0;
+ pts+=n;stats();return n;
+}
+stats();
+$("#slow").onclick=function(){slow=!slow;this.setAttribute("aria-pressed",String(slow))};
+
+var tabs=[0,1,2].map(function(i){return $("#t"+i)});
+tabs.forEach(function(t,i){t.onclick=function(){
+ stopAll=true;if(synth)synth.cancel();
+ tabs.forEach(function(x,j){x.setAttribute("aria-selected",String(i===j));$("#p"+j).hidden=i!==j});
+}});
+
+var ul=$("#lines");
+LINES.forEach(function(l){
+ var li=document.createElement("li");li.className="line";
+ var b=document.createElement("button");b.className="play";b.textContent="▶";b.setAttribute("aria-label","Putar: "+l[0]);
+ b.onclick=function(){stopAll=true;say(l[0])};
+ var d=document.createElement("div");d.className="txt";
+ d.innerHTML='<div class="en"></div><div class="id"></div>';
+ d.children[0].textContent=l[0];d.children[1].textContent=l[1];
+ li.appendChild(b);li.appendChild(d);ul.appendChild(li);
+});
+$("#all").onclick=function(){
+ stopAll=false;var i=0;
+ (function next(){if(stopAll||i>=LINES.length)return;say(LINES[i++][0],function(){setTimeout(next,500)})})();
+};
+$("#show").onclick=function(){
+ var on=this.getAttribute("aria-pressed")!=="true";
+ this.setAttribute("aria-pressed",String(on));
+ this.textContent=on?"👀 Teks tampil":"🙈 Teks tersembunyi";
+ ul.classList.toggle("hidden-text",!on);
+};
+
+var di=0;
+function tok(s){return s.toLowerCase().replace(/[’]/g,"'").replace(/[^a-z' ]/g," ").split(/\s+/).filter(Boolean)}
+function showDict(){
+ $("#dnum").textContent="Soal "+(di+1)+" dari "+DICT.length;
+ $("#din").value="";$("#din").disabled=false;$("#dres").textContent="";
+ $("#dcheck").hidden=false;$("#dnext").hidden=true;$("#dnext").textContent="Lanjut ➜";
+}
+$("#dplay").onclick=function(){say(DICT[di])};
+function dcheck(){
+ if($("#dcheck").hidden)return;
+ var ans=tok($("#din").value);
+ if(!ans.length){$("#dres").textContent="Ketik dulu ya, baru dicek.";return}
+ var words=DICT[di].split(" "),hits=0,html="";
+ words.forEach(function(w,i){
+  var ok=ans[i]===tok(w)[0];if(ok)hits++;
+  html+='<span class="w '+(ok?"r":"x")+'">'+w+'</span>';
+ });
+ var perfect=hits===words.length;
+ var n=award(perfect?15:Math.round(hits/words.length*10),perfect);
+ $("#dres").innerHTML=html+'<p class="fb">'+(perfect?"Mantap, benar semua! ":"Hijau berarti benar, pink perlu diperbaiki. ")+"+"+n+" poin</p>";
+ $("#din").disabled=true;$("#dcheck").hidden=true;
+ $("#dnext").hidden=false;
+ if(di===DICT.length-1)$("#dnext").textContent="Selesai 🎉";
+}
+$("#dcheck").onclick=dcheck;
+$("#din").onkeydown=function(e){if(e.key==="Enter")dcheck()};
+$("#dnext").onclick=function(){
+ if(di>=DICT.length-1){di=0;showDict();$("#dres").textContent="Semua soal selesai! Ketuk putar untuk mengulang dari awal.";return}
+ di++;showDict();
+};
+showDict();
+
+var answered=0,qpts=0;
+function build(){
+ var quiz=$("#quiz");quiz.innerHTML="";answered=0;qpts=0;$("#qscore").textContent="";$("#qreset").hidden=true;
+ QUIZ.forEach(function(q){
+  var box=document.createElement("div");box.className="q";
+  var s=document.createElement("p");s.className="sent";
+  s.innerHTML=q[0]+' <span class="blank">&nbsp;</span> '+q[1]+'.';
+  var o=document.createElement("div");o.className="opts";
+  var p=document.createElement("button");p.className="play";p.textContent="▶";p.setAttribute("aria-label","Putar kalimat");
+  p.onclick=function(){say(q[3])};
+  o.appendChild(p);
+  var fb=document.createElement("p");fb.className="fb";
+  var done=false;
+  ["am","is","are"].forEach(function(w){
+   var b=document.createElement("button");b.textContent=w;
+   b.onclick=function(){
+    if(done)return;done=true;answered++;
+    var ok=w===q[2],n=award(ok?10:0,ok);
+    if(ok){qpts++;b.className="right";fb.textContent="Benar! +"+n+" poin"}
+    else{b.className="wrong";fb.textContent="Belum tepat, jawabannya "+q[2]+"."}
+    s.querySelector(".blank").textContent=q[2];
+    if(answered===QUIZ.length){$("#qscore").textContent="Skor kuis: "+qpts+" dari "+QUIZ.length;$("#qreset").hidden=false}
+   };
+   o.appendChild(b);
+  });
+  box.appendChild(s);box.appendChild(o);box.appendChild(fb);quiz.appendChild(box);
+ });
+}
+$("#qreset").onclick=build;
+build();
+})();
+</script>
+</body>
+</html>
